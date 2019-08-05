@@ -1,5 +1,3 @@
-[![CircleCI]()]()
-
 # Styx Occursum Events
 A social network where people of all interests can create events, and network with each other. The idea is simple: be it programming, reading, gaming, doing sports or dancing, there is a whole group of people out there sharing that interest with you. The only thing remaining is for you to meet them :)
 
