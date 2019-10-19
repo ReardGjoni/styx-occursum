@@ -9,11 +9,11 @@ jobs:
       # Specify the version you desire here
       - image: circleci/php:7.3-stretch-node-browsers
       - image: circleci/mysql:5.7-ram
-      environment:
-          - MYSQL_USER=localhost
-          - MYSQL_PASSWORD=secret
-          - MYSQL_ALLOW_EMPTY_PASSWORD=false
-          - MYSQL_DATABASE=homestead
+        environment:
+            - MYSQL_USER=localhost
+            - MYSQL_PASSWORD=secret
+            - MYSQL_ALLOW_EMPTY_PASSWORD=false
+            - MYSQL_DATABASE=homestead
 
       # Specify service dependencies here if necessary
       # CircleCI maintains a library of pre-built images
