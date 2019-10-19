@@ -59,8 +59,8 @@ jobs:
             - ~/.yarn
 
       # prepare the database
-      - run: mysqladmin create test --user="localhost" --password="secret"
-      - run: php artisan migrate --env=testing --database=sqlite_testing --force
+      - run: mysqladmin create test --user=127.0.0.1 --password="secret"
+      - run: php artisan migrate --env=testing --force
 
       # run tests with phpunit or codecept
       #- run: ./vendor/bin/phpunit
