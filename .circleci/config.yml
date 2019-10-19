@@ -9,6 +9,11 @@ jobs:
       # Specify the version you desire here
       - image: circleci/php:7.3-stretch-node-browsers
       - image: circleci/mysql:5.7-ram
+      environment:
+          - MYSQL_USER=localhost
+          - MYSQL_PASSWORD=secret
+          - MYSQL_ALLOW_EMPTY_PASSWORD=false
+          - MYSQL_DATABASE=homestead
 
       # Specify service dependencies here if necessary
       # CircleCI maintains a library of pre-built images
@@ -60,7 +65,7 @@ jobs:
 
       # prepare the database
       - run: mysqladmin create test --user=127.0.0.1 --password="secret"
-      - run: php artisan migrate --env=testing --force
+      
 
       # run tests with phpunit or codecept
       #- run: ./vendor/bin/phpunit
