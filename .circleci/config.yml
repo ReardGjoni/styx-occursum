@@ -8,6 +8,17 @@ jobs:
     docker:
       # Specify the version you desire here
       - image: circleci/php:7.3-stretch-node-browsers
+      - image: circleci/mysql:5.7-ram
+        environment:
+                    # Define these information to be used later in script
+                    MYSQL_CONNECTION: mysql
+                    MYSQL_HOST: 127.0.0.1
+                    MYSQL_PORT: 33060
+                    MYSQL_DATABASE: homestead
+                    MYSQL_USERNAME: homestead
+                    MYSQL_PASSWORD: secret
+                    MYSQL_ROOT_HOST: "%"
+                    MYSQL_ROOT_PASSWORD: secret
 
       # Specify service dependencies here if necessary
       # CircleCI maintains a library of pre-built images
@@ -22,7 +33,9 @@ jobs:
       - checkout
 
       - run: sudo apt update && sudo apt install zlib1g-dev libsqlite3-dev
+      - run: sudo docker-php-ext-install bcmath
       - run: sudo docker-php-ext-install zip
+      - run: sudo apt-get install mysql-client
 
       # Download and cache dependencies
 
@@ -56,8 +69,8 @@ jobs:
             - ~/.yarn
 
       # prepare the database
-      - run: touch storage/testing.sqlite
-      - run: php artisan migrate --env=testing --database=sqlite_testing --force
+
+      - run: php artisan migrate --env=testing --force
 
       # run tests with phpunit or codecept
       #- run: ./vendor/bin/phpunit
